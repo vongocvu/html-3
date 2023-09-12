@@ -1,6 +1,9 @@
 import { AllProducts } from "../../data/Products.js";
-import { Slider } from "../../utils/Sliders.js";
-import {show_cart,ProductInCart} from "../../Service/Carts/AddToCart.js";
+import { Slider } from "./handle_sliders.js";
+import {show_cart,ProductInCart} from "../../UI-controllers/Cart/showCart.js";
+
+
+
 
 const list_product_add = document.getElementById("product_add_like");
 // const emptys = document.querySelector(".empty");

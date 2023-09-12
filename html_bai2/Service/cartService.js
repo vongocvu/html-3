@@ -1,6 +1,6 @@
 
 import { ProductInCart } from "../UI-controllers/Cart/showCart.js";
-import { AllProducts } from "../../data/Products.js";
+import { AllProducts } from "../data/Products.js";
 
 
 export function isProductInCart(productId) {

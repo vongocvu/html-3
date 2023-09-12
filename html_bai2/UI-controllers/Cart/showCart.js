@@ -1,6 +1,7 @@
-import { AllProducts } from "../../data/Products.js";
+// import { AllProducts } from "../../data/Products.js";
 import { total_Cart , deleteProduct , isProductInCart , addProductToCart , updateProductQuantity} from "../../Service/cartService.js";
-// import { count_down } from "../../utils/CountDown.js";
+import { count_down } from "../CountDown.js";
+import { showCart_slide } from "../Slider/Cart_slider.js";
 export const ProductInCart = [];
 
 export function AddTocart() {
@@ -19,23 +20,7 @@ export function AddTocart() {
         addProductToCart(productId);
     }
         
-        
-        // if (ProductInCart.some((product) => product.id === product_id)) {
-        //   // kiem tra san pham vua them co trong gio hang chua
-        //   ProductInCart.forEach((data, index) => {
-        //     if (data.id === product_id) {
-        //       ProductInCart[index].quantity += 1; // neu co thi update quantiy len 1
-        //     }
-        //   });
-        // } else {
-        //   // neu khong co trong gio hang thi them moi san pham vao
-        //   AllProducts.forEach((data) => {
-        //     if (data.id === product_id) {
-        //       ProductInCart.push({ ...data, quantity: 1 });
-        //     }
-        //   });
-        // }
-  
+    
         box_cart.style.display = "block";
         document.querySelector(".notification_cart").innerHTML = `
               <div class ="successful">
@@ -93,8 +78,8 @@ export function show_cart() {
     
     edit_quantity(prev_btns, next_btns, ProductInCart);
     initializeDeleteButtons(document.querySelectorAll(".xoa_sp"));
-    // showCart_slide();
-    // count_down();
+    showCart_slide();
+    count_down();
     totalCart();
    
   }

@@ -1,6 +1,7 @@
-import { AllProducts } from "../../data/Products.js";
-// import { AddTocart } from "../../UI-controllers/Cart/showCart.js";
-
+// import { AllProducts } from "../../data/Products.js";
+//  import { AddTocart } from "../../UI-controllers/Cart/showCart.js";
+ import { AllProducts } from "../../data/Products.js";
+ import { AddTocart } from "../../UI-controllers/Cart/showCart.js";
 
 const list_products = document.getElementById("list-products");
 
@@ -165,7 +166,7 @@ export function showUI () {
         }
 });
 
-// AddTocart();
+AddTocart();
 
 
 };
