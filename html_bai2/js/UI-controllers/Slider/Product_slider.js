@@ -1,9 +1,6 @@
 import { AllProducts } from "../../data/Products.js";
 import { Slider } from "./handle_sliders.js";
-import {show_cart,ProductInCart} from "../../UI-controllers/Cart/showCart.js";
-
-
-
+import { show_cart, ProductInCart } from "../Cart/showCart.js";
 
 const list_product_add = document.getElementById("product_add_like");
 // const emptys = document.querySelector(".empty");
@@ -54,13 +51,13 @@ export function showCart_slide() {
 
   const prevs = document.querySelectorAll(".prev_btn");
   const nexts = document.querySelectorAll(".next_btn");
-  edit_quantity(prevs, nexts);
+  edit_quantityEvent(prevs, nexts);
 
   const btns = document.querySelectorAll(".btn-add-sugguets-product");
-  addProductSugguest(btns);
+  addProductSugguestEvent(btns);
 }
 
-function edit_quantity(prevs, nexts) {
+function edit_quantityEvent(prevs, nexts) {
   let count = 1;
   prevs.forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -68,22 +65,25 @@ function edit_quantity(prevs, nexts) {
       if (count < 1) {
         count = 1;
       }
-      btn.parentElement.children[1].innerText = `${count < 10 ? 0 : ""}${count}`;
+      btn.parentElement.children[1].innerText = `${
+        count < 10 ? 0 : ""
+      }${count}`;
     });
   });
 
   nexts.forEach((btn) => {
     btn.addEventListener("click", () => {
       count++;
-      btn.parentElement.children[1].innerText = `${count < 10 ? 0 : ""}${count}`;
+      btn.parentElement.children[1].innerText = `${
+        count < 10 ? 0 : ""
+      }${count}`;
     });
   });
 }
 
-function addProductSugguest(btns) {
+function addProductSugguestEvent(btns) {
   btns.forEach((btn) => {
     btn.addEventListener("click", () => {
-    
       if (
         ProductInCart.some(
           (product) => product.id === parseInt(btn.getAttribute("product_id"))
@@ -99,13 +99,15 @@ function addProductSugguest(btns) {
       } else {
         AllProducts.forEach((product, index) => {
           if (product.id === parseInt(btn.getAttribute("product_id"))) {
-            ProductInCart.unshift({ ...product, quantity: parseInt(btn.parentElement.children[1].innerText) });
+            ProductInCart.unshift({
+              ...product,
+              quantity: parseInt(btn.parentElement.children[1].innerText),
+            });
           }
         });
       }
 
       show_cart();
-     
     });
   });
 }

@@ -1,102 +1,119 @@
-.footer{
+.footer {
     width: 100%;
     height: auto;
     margin: 0 auto;
 }
-.footer-top{
+
+.footer-top {
     padding: 60px 120px;
     border-top: 1px solid var(--white-100);
 
 }
-.row{
+
+.row {
     display: flex;
     justify-content: space-between;
 }
-.footer-items-collection h3{
+
+.footer-items-collection h3 {
     font-size: 16px;
     font-weight: 600;
-   
+
 }
+
 .img-footer img {
-  max-width: 100%;
+    max-width: 100%;
     height: auto;
     width: 90px;
 }
-.footer-list-items{
+
+.footer-list-items {
     display: flex;
     flex-direction: column;
     padding-top: 15px;
 }
+
 .footer-list-items a {
     font-weight: 400;
     font-size: 14px;
     line-height: 26px;
-    
+
 }
 
-.text-sign{
+.text-sign {
     font-style: normal;
     font-weight: 600;
     font-size: 20px;
     line-height: 28px;
     max-width: 296px;
 }
-.footer-input-form{
-  
-     position: relative;
-     /* height: 30px; */
+
+.footer-input-form {
+
+    position: relative;
+    /* height: 30px; */
     border: 1px solid var(--white-100);
     border-radius: 5px;
     margin-top: 15px;
-   max-width: 450px;
+    max-width: 450px;
 }
-.footer-input-form input{
-    padding:6px 15px;
+
+.footer-input-form input {
+    padding: 6px 15px;
     border-radius: 5px;
     border: none;
     font-size: 14px;
-  
+
 }
-.footer-input-form svg{
+
+.footer-input-form svg {
     position: absolute;
     z-index: 1;
-  right: 5%;
+    right: 5%;
     top: 0;
     stroke: var(--black);
 }
-.list-icon-connect{
+
+.list-icon-connect {
     padding-top: 20px;
 }
-.list-icon-connect a{
+
+.list-icon-connect a {
     padding-right: 10px;
 }
+
 .list-icon-connect img {
     width: 25px;
     height: 25px;
 }
 
-.footer-bottom{
+.footer-bottom {
     padding: 10px 90px 0px 90px;
 }
-.footer-bottom-text-left{
-    font-size: var(--font14) ;
+
+.footer-bottom-text-left {
+    font-size: var(--font14);
     color: var(--black-200);
     line-height: 22px;
 }
-.img-visa img{
+
+.img-visa img {
     width: 40px;
     height: 24px;
     padding-right: 15px;
 }
-.bottom-text{
+
+.bottom-text {
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-top: 1px solid var(--white-100);
 }
-.footer-nav-menu-ms-992{
+
+.footer-nav-menu-ms-992 {
     display: none;
 }
-.enter-email:focus{
+
+.enter-email:focus {
     outline: none;
 }
