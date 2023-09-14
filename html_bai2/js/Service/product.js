@@ -1,7 +1,6 @@
 import { ProductInCart } from "../UI-controllers/Cart/showCart.js";
 import { AllProducts } from "../data/Products.js";
 
-
 //Kiểm tra sản phẩm có tồn tại hay chưa
 export function isProductInCart(productId) {
   return ProductInCart.some((product) => product.id === productId);
@@ -9,11 +8,7 @@ export function isProductInCart(productId) {
 
 // Hàm thêm sản phẩm vào giỏ hàng khi sản phẩm đó chưa tồn tại thì số lượng được cập nhật là 1
 export function addProductToCart(productId) {
-  AllProducts.forEach((data) => {
-    if (data.id === productId) {
-      ProductInCart.push({ ...data, quantity: 1 });
-    }
-  });
+  ProductInCart.push({ id: productId, quantity: 1 });
 }
 
 // Hàm cập nhật số lượng sản phẩm trong giỏ hàng khi sản phẩm đã tồn tại

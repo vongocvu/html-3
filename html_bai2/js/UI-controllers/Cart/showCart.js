@@ -1,4 +1,4 @@
-
+import { AllProducts } from "../../data/Products.js";
 import {
   total_Cart,
   deleteProduct,
@@ -43,36 +43,41 @@ export function AddTocart() {
 
 export function show_cart() {
   cart.innerHTML = "";
-  ProductInCart.forEach((product) => {
-    cart.innerHTML += `
-           <div class="item-product-detail-cart  item-product-detail ">
-           <div class="img-product-cart">
-           <img src="${product.image[0]}" />
+  AllProducts.forEach((product) => {
+    ProductInCart.forEach((productInCart) => {
+      if (product.id === productInCart.id) {
+        cart.innerHTML += `
+        <div class="item-product-detail-cart  item-product-detail ">
+        <div class="img-product-cart">
+        <img src="${product.image[0]}" />
+        </div>
+        <div class="text-item-cart">
+           <h1>${product.name}</h1>
+           <div class="item-size-color">
+               <span>${product.size[0]}, </span>
+               <span>${product.color[0]}</span>
            </div>
-           <div class="text-item-cart">
-              <h1>${product.name}</h1>
-              <div class="item-size-color">
-                  <span>${product.size[0]}, </span>
-                  <span>${product.color[0]}</span>
-              </div>
-              <span class="item-price-sell">$${product.price_sell}</span>
-                <div class="chung">
-                <div class="tang-giam" product_id="${product.id}">
-                  <span class="prev_btn">-</span>
-                  <span class="item-quantity">${
-                    product.quantity < 10 ? 0 : ""
-                  }${product.quantity}</span>
-                  <span class="next_btn">+</span>
-                </div>
-                <div class ="xoa_product" >
-                    <p class = "xoa_sp" product_id = "${product.id}">Remove</p>
-                </div>
-                </div>
-  
-           </div>
-           </div>
-          `;
+           <span class="item-price-sell">$${product.price_sell}</span>
+             <div class="chung">
+             <div class="tang-giam" product_id="${product.id}">
+               <span class="prev_btn">-</span>
+               <span class="item-quantity">${
+                 productInCart.quantity < 10 ? 0 : ""
+               }${productInCart.quantity}</span>
+               <span class="next_btn">+</span>
+             </div>
+             <div class ="xoa_product" >
+                 <p class = "xoa_sp" product_id = "${product.id}">Remove</p>
+             </div>
+             </div>
+
+        </div>
+        </div>
+       `;
+      }
+    });
   });
+
   let prev_btns = document.querySelectorAll(".prev_btn");
   let next_btns = document.querySelectorAll(".next_btn");
 
