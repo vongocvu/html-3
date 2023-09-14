@@ -108,6 +108,7 @@ function initializeDeleteButtonsEvent(delete_btns) {
   });
 }
 
+//Cập nhật số lượng sản phẩm trong giỏ hàng
 export function edit_quantityEvent(prev_btns, next_btns, data) {
   prev_btns.forEach((prev) => {
     prev.addEventListener("click", () => {

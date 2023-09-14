@@ -1,9 +1,8 @@
 import { AllProducts } from "../../data/Products.js";
-import { Slider } from "./handle_sliders.js";
+import { SliderEvent } from "./handle_sliders.js";
 import { show_cart, ProductInCart } from "../Cart/showCart.js";
 
 const list_product_add = document.getElementById("product_add_like");
-// const emptys = document.querySelector(".empty");
 const NewProduct = AllProducts;
 
 export function showCart_slide() {
@@ -56,7 +55,7 @@ export function showCart_slide() {
   const btns = document.querySelectorAll(".btn-add-sugguets-product");
   addProductSugguestEvent(btns);
 }
-
+// Hàm cập nhật số lượng
 function edit_quantityEvent(prevs, nexts) {
   let count = 1;
   prevs.forEach((btn) => {
@@ -118,4 +117,4 @@ showCart_slide();
 const slider_product = document.querySelector(".also-add");
 const prev = document.getElementById("prev-slider");
 const next = document.getElementById("next-slider");
-Slider(prev, next, slider_product);
+SliderEvent(prev, next, slider_product);

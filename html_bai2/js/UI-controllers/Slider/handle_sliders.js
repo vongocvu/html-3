@@ -1,4 +1,4 @@
-export function Slider(prev, next, slider) {
+export function SliderEvent(prev, next, slider) {
   let count = 0;
   prev.addEventListener("click", () => {
     count--;
