@@ -35,13 +35,11 @@ export function totalCart() {
       if (product.id === productIncart.id) {
         const productPrice = parseInt(product.price_sell);
         const productQuantity = parseInt(productIncart.quantity);
-        // return accumulator +  productQuantity;
         total_temp = productPrice * productQuantity;
       }
       return accumulator + total_temp;
     }, 0);
-    total += total1; // để lấy giá sản phẩm đang click,
-    // nếu không += thì nó sẽ trả về số tiền của sản phẩm cuối cùng trong danh sách tất cả sản phẩm
+    total += total1; 
   });
   return total;
 }
