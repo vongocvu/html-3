@@ -1,4 +1,5 @@
 // import { ProductInCart } from "../UI-controllers/cart/cart.js";
+import { AllProducts } from "../data/products.js";
 export const ProductInCart = [];
 function getProductInCart() {
   return ProductInCart;
@@ -20,33 +21,39 @@ export function addProductToCart(productId) {
 export function updateProductQuantity(productId) {
   cartItems.map((data) => {
     if (data.id === productId) {
-     data.quantity += 1;
+      data.quantity += 1;
     }
   });
 }
 
-
-
-
 //TOTAL PRODUCTS
 export function totalCart() {
-  const total = cartItems.reduce((accumulator, product) => {
-    const productPrice = parseInt(product.price_sell);
-    console.log(product.price_sell);
-    const productQuantity = parseInt(product.quantity);
-
-    return accumulator + productPrice * productQuantity;
-    // return accumulator +  productQuantity;
-  }, 0);
-
+  let total = 0;
+  AllProducts.forEach((product) => {
+    let total1 = cartItems.reduce((accumulator, productIncart) => {
+      let total_temp = 0;
+      if (product.id === productIncart.id) {
+        const productPrice = parseInt(product.price_sell);
+        const productQuantity = parseInt(productIncart.quantity);
+        // return accumulator +  productQuantity;
+        total_temp = productPrice * productQuantity;
+      }
+      return accumulator + total_temp;
+    }, 0);
+    total += total1; // để lấy giá sản phẩm đang click,
+    // nếu không += thì nó sẽ trả về số tiền của sản phẩm cuối cùng trong danh sách tất cả sản phẩm
+  });
   return total;
 }
 
 //DELETE PRODUCT
 
 export function deleteProduct(productId) {
+  // Sử dụng filter để lọc ra các sản phẩm có id trùng với productId
+  // Ở đây, index không phải là một chỉ số của mảng, mà là một mảng chứa các sản phẩm trùng id.
   const index = cartItems.filter((product) => product.id === productId);
   if (index !== -1) {
+    // Xóa sản phẩm khỏi mảng cartItems nếu tìm thấy chỉ số hợp lệ
     cartItems.splice(index, 1);
   }
 }
