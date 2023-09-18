@@ -1,23 +1,21 @@
-import { AllProducts } from "../../data/Products.js";
+import { AllProducts } from "../../data/products.js";
 import {
-  total_Cart,
+  totalCart,
   deleteProduct,
   isProductInCart,
   addProductToCart,
   updateProductQuantity,
-} from "../../Service/product.js";
-import { count_down } from "../CountDown_timer.js";
-import { showCart_slide } from "../Slider/Product_slider.js";
-export const ProductInCart = [];
+} from "../../service/product.js";
+import {cartItems} from "../../service/product.js"
+import { countdown } from "../countdown-timer.js";
+import { showCartSlider } from "../slider/slider-product.js";
 
 export function AddTocart() {
   const btn_add_to_cart = document.querySelectorAll(".btn-add-to-cart");
   let box_cart = document.querySelector(".box-cart");
-  // const cart = document.getElementById("cart");
-
+  
   btn_add_to_cart.forEach((btn) => {
     btn.addEventListener("click", () => {
-      console.log("okok");
       const productId = parseInt(btn.getAttribute("product_id"));
 
       if (isProductInCart(productId)) {
@@ -36,15 +34,18 @@ export function AddTocart() {
         document.querySelector(".notification_cart").innerHTML = ``;
       }, 2000);
 
-      show_cart();
+      showCart();
     });
   });
 }
 
-export function show_cart() {
+
+
+
+export function showCart() {
   cart.innerHTML = "";
   AllProducts.forEach((product) => {
-    ProductInCart.forEach((productInCart) => {
+    cartItems.forEach((productInCart) => {
       if (product.id === productInCart.id) {
         cart.innerHTML += `
         <div class="item-product-detail-cart  item-product-detail ">
@@ -81,40 +82,42 @@ export function show_cart() {
   let prev_btns = document.querySelectorAll(".prev_btn");
   let next_btns = document.querySelectorAll(".next_btn");
 
-  edit_quantityEvent(prev_btns, next_btns, ProductInCart);
+  editQuantityEvent(prev_btns, next_btns, cartItems);
   initializeDeleteButtonsEvent(document.querySelectorAll(".xoa_sp"));
-  showCart_slide();
-  count_down();
-  totalCart();
+  showCartSlider();
+  countdown();
+  gettotalCart();
 }
+
+
+
 //TOTAL
 function updateCartUI(total) {
   const total_cart = document.getElementById("total-cart");
   total_cart.innerText = `$${total}.00`;
 }
-function totalCart() {
-  const total = total_Cart();
+function gettotalCart() {
+  const total = totalCart();
   updateCartUI(total);
 }
-totalCart();
+gettotalCart();
 // DELETE PRODUCT
 function handleDeleteButtonClick(del_sp) {
   const productId = parseInt(del_sp.getAttribute("product_id"));
   deleteProduct(productId);
-  show_cart();
+  showCart();
 }
 
 function initializeDeleteButtonsEvent(delete_btns) {
   delete_btns.forEach((del_sp) => {
     del_sp.addEventListener("click", () => {
-      console.log("okok");
       handleDeleteButtonClick(del_sp);
     });
   });
 }
 
 //Cập nhật số lượng sản phẩm trong giỏ hàng
-export function edit_quantityEvent(prev_btns, next_btns, data) {
+export function editQuantityEvent(prev_btns, next_btns, data) {
   prev_btns.forEach((prev) => {
     prev.addEventListener("click", () => {
       data.forEach((product, index) => {
@@ -126,7 +129,7 @@ export function edit_quantityEvent(prev_btns, next_btns, data) {
           }
         }
       });
-      show_cart();
+      showCart();
     });
   });
 
@@ -139,7 +142,7 @@ export function edit_quantityEvent(prev_btns, next_btns, data) {
           product.quantity += 1;
         }
       });
-      show_cart();
+      showCart();
     });
   });
 }

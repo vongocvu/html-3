@@ -1,11 +1,12 @@
-import { AllProducts } from "../../data/Products.js";
-import { SliderEvent } from "./handle_sliders.js";
-import { show_cart, ProductInCart } from "../Cart/showCart.js";
-
+import { AllProducts } from "../../data/products.js";
+import { SliderEvent } from "./sliderEvent.js";
+// import { show_cart, ProductInCart } from "../cart/cart.js";
+import { showCart } from "../cart/cart.js";
+import { ProductInCart } from "../../service/product.js";
 const list_product_add = document.getElementById("product_add_like");
 const NewProduct = AllProducts;
 
-export function showCart_slide() {
+export function showCartSlider() {
   list_product_add.innerHTML = "";
   NewProduct.forEach((productAdd) => {
     list_product_add.innerHTML += `
@@ -50,13 +51,13 @@ export function showCart_slide() {
 
   const prevs = document.querySelectorAll(".prev_btn");
   const nexts = document.querySelectorAll(".next_btn");
-  edit_quantityEvent(prevs, nexts);
+  editQuantityEvent(prevs, nexts);
 
   const btns = document.querySelectorAll(".btn-add-sugguets-product");
   addProductSugguestEvent(btns);
 }
 // Hàm cập nhật số lượng
-function edit_quantityEvent(prevs, nexts) {
+function editQuantityEvent(prevs, nexts) {
   let count = 1;
   prevs.forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -106,12 +107,12 @@ function addProductSugguestEvent(btns) {
         });
       }
 
-      show_cart();
+      showCart();
     });
   });
 }
 
-showCart_slide();
+showCartSlider();
 
 // handler change slide
 const slider_product = document.querySelector(".also-add");

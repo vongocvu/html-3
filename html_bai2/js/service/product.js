@@ -1,31 +1,42 @@
-import { ProductInCart } from "../UI-controllers/Cart/showCart.js";
-import { AllProducts } from "../data/Products.js";
+// import { ProductInCart } from "../UI-controllers/cart/cart.js";
+export const ProductInCart = [];
+function getProductInCart() {
+  return ProductInCart;
+}
+
+export const cartItems = getProductInCart();
 
 //Kiểm tra sản phẩm có tồn tại hay chưa
 export function isProductInCart(productId) {
-  return ProductInCart.some((product) => product.id === productId);
+  return cartItems.some((product) => product.id === productId);
 }
 
 // Hàm thêm sản phẩm vào giỏ hàng khi sản phẩm đó chưa tồn tại thì số lượng được cập nhật là 1
 export function addProductToCart(productId) {
-  ProductInCart.push({ id: productId, quantity: 1 });
+  cartItems.push({ id: productId, quantity: 1 });
 }
 
 // Hàm cập nhật số lượng sản phẩm trong giỏ hàng khi sản phẩm đã tồn tại
 export function updateProductQuantity(productId) {
-  ProductInCart.map((data, index) => {
+  cartItems.map((data) => {
     if (data.id === productId) {
-      ProductInCart[index].quantity += 1;
+     data.quantity += 1;
     }
   });
 }
 
+
+
+
 //TOTAL PRODUCTS
-export function total_Cart() {
-  const total = ProductInCart.reduce((accumulator, product) => {
+export function totalCart() {
+  const total = cartItems.reduce((accumulator, product) => {
     const productPrice = parseInt(product.price_sell);
+    console.log(product.price_sell);
     const productQuantity = parseInt(product.quantity);
+
     return accumulator + productPrice * productQuantity;
+    // return accumulator +  productQuantity;
   }, 0);
 
   return total;
@@ -34,8 +45,8 @@ export function total_Cart() {
 //DELETE PRODUCT
 
 export function deleteProduct(productId) {
-  const index = ProductInCart.filter((product) => product.id === productId);
+  const index = cartItems.filter((product) => product.id === productId);
   if (index !== -1) {
-    ProductInCart.splice(index, 1);
+    cartItems.splice(index, 1);
   }
 }

@@ -1,4 +1,4 @@
-export function count_down() {
+export function countdown() {
   let minute = 5;
   let seconds = 0;
   const count = document.querySelector(".count");

@@ -1,6 +1,6 @@
 
-import { AllProducts } from "../../data/Products.js";
-import { AddTocart } from "../Cart/showCart.js";
+import { AllProducts } from "../../data/products.js";
+import { AddTocart } from "../cart/cart.js";
 
 const list_products = document.getElementById("list-products");
 
