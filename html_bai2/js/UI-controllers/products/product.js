@@ -2,10 +2,10 @@ import { allProducts } from "../../data/products.js";
 import { addToCart } from "../cart/cart.js";
 
 export function showUI() {
-  const list_products = document.getElementById("list-products");
+  const listProducts = document.getElementById("list-products");
   allProducts.map((product, index) => {
     if (index < 5) {
-      list_products.innerHTML += `
+      listProducts.innerHTML += `
             <div class="lists-product-detail-1">
             <div class="items-products-detail" style="--bg-image: url(${product.image[1]})">
                 <div class="products-img">

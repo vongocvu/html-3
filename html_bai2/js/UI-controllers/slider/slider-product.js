@@ -1,7 +1,7 @@
 import { allProducts } from "../../data/products.js";
-import { SliderEvent } from "./sliderEvent.js";
+import { sliderEvent } from "./sliderEvent.js";
 import { showCart } from "../cart/cart.js";
-import { ProductInCart } from "../../service/product.js";
+import { productInCart } from "../../service/product.js";
 
 export function showCartSlider() {
   const listProductAdd = document.getElementById("product_add_like");
@@ -54,6 +54,7 @@ export function showCartSlider() {
 
   const btns = document.querySelectorAll(".btn-add-sugguets-product");
   addProductSugguestEvent(btns);
+  sliderEvent();
 }
 // Hàm cập nhật số lượng
 function editQuantityEvent(prevs, nexts) {
@@ -113,4 +114,3 @@ function addProductSugguestEvent(btns) {
 
 showCartSlider();
 
-SliderEvent();

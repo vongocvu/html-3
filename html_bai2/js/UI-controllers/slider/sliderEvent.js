@@ -1,4 +1,4 @@
-export function SliderEvent() {
+export function sliderEvent() {
   const prev = document.getElementById("prev-slider");
   const next = document.getElementById("next-slider");
   const slider = document.querySelector(".also-add");
