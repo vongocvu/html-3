@@ -1,4 +1,4 @@
-export const AllProducts = [
+export const allProducts = [
   {
     id: 1,
     name: "A Beautiful Sweater For Women",

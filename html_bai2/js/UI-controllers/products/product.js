@@ -1,11 +1,9 @@
-
-import { AllProducts } from "../../data/products.js";
-import { AddTocart } from "../cart/cart.js";
-
-const list_products = document.getElementById("list-products");
+import { allProducts } from "../../data/products.js";
+import { addToCart } from "../cart/cart.js";
 
 export function showUI() {
-  AllProducts.map((product, index) => {
+  const list_products = document.getElementById("list-products");
+  allProducts.map((product, index) => {
     if (index < 5) {
       list_products.innerHTML += `
             <div class="lists-product-detail-1">
@@ -165,5 +163,5 @@ export function showUI() {
     }
   });
 
-  AddTocart();
+  addToCart();
 }

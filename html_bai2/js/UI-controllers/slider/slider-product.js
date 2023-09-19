@@ -1,15 +1,14 @@
-import { AllProducts } from "../../data/products.js";
+import { allProducts } from "../../data/products.js";
 import { SliderEvent } from "./sliderEvent.js";
-// import { show_cart, ProductInCart } from "../cart/cart.js";
 import { showCart } from "../cart/cart.js";
 import { ProductInCart } from "../../service/product.js";
-const list_product_add = document.getElementById("product_add_like");
-const NewProduct = AllProducts;
 
 export function showCartSlider() {
-  list_product_add.innerHTML = "";
-  NewProduct.forEach((productAdd) => {
-    list_product_add.innerHTML += `
+  const listProductAdd = document.getElementById("product_add_like");
+
+  listProductAdd.innerHTML = "";
+  allProducts.forEach((productAdd) => {
+    listProductAdd.innerHTML += `
                   <div class="item-product-detail-cart sliders">
                   <div class="img-product-cart">
                   <img src="${productAdd.image}" />
@@ -97,7 +96,7 @@ function addProductSugguestEvent(btns) {
           }
         });
       } else {
-        AllProducts.forEach((product, index) => {
+        allProducts.forEach((product, index) => {
           if (product.id === parseInt(btn.getAttribute("product_id"))) {
             ProductInCart.unshift({
               ...product,
@@ -114,8 +113,4 @@ function addProductSugguestEvent(btns) {
 
 showCartSlider();
 
-// handler change slide
-const slider_product = document.querySelector(".also-add");
-const prev = document.getElementById("prev-slider");
-const next = document.getElementById("next-slider");
-SliderEvent(prev, next, slider_product);
+SliderEvent();

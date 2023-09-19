@@ -1,30 +1,19 @@
-import { AllProducts } from "../../data/products.js";
-import {
-  totalCart,
-  deleteProduct,
-  isProductInCart,
-  addProductToCart,
-  updateProductQuantity,
-} from "../../service/product.js";
-import {cartItems} from "../../service/product.js"
+import { allProducts } from "../../data/products.js";
+import { totalCart, deleteProduct } from "../../service/product.js";
+import { getProductInCart } from "../../service/product.js";
 import { countdown } from "../countdown-timer.js";
 import { showCartSlider } from "../slider/slider-product.js";
+import { addOrUpdateProductInCart } from "../../service/product.js";
 
-export function AddTocart() {
-  const btn_add_to_cart = document.querySelectorAll(".btn-add-to-cart");
-  let box_cart = document.querySelector(".box-cart");
-  
-  btn_add_to_cart.forEach((btn) => {
+export function addToCart() {
+  const btnAddToCart = document.querySelectorAll(".btn-add-to-cart");
+  let boxCart = document.querySelector(".box-cart");
+
+  btnAddToCart.forEach((btn) => {
     btn.addEventListener("click", () => {
       const productId = parseInt(btn.getAttribute("product_id"));
-
-      if (isProductInCart(productId)) {
-        updateProductQuantity(productId);
-      } else {
-        addProductToCart(productId);
-      }
-
-      box_cart.style.display = "block";
+      addOrUpdateProductInCart(productId);
+      boxCart.style.display = "block";
       document.querySelector(".notification_cart").innerHTML = `
               <div class ="successful">
               <p class="message">Product Add To Cart Successful</p>
@@ -39,12 +28,10 @@ export function AddTocart() {
   });
 }
 
-
-
-
 export function showCart() {
+  const cartItems = getProductInCart();
   cart.innerHTML = "";
-  AllProducts.forEach((product) => {
+  allProducts.forEach((product) => {
     cartItems.forEach((productInCart) => {
       if (product.id === productInCart.id) {
         cart.innerHTML += `
@@ -79,22 +66,20 @@ export function showCart() {
     });
   });
 
-  let prev_btns = document.querySelectorAll(".prev_btn");
-  let next_btns = document.querySelectorAll(".next_btn");
+  let prevBtns = document.querySelectorAll(".prev_btn");
+  let nextBtns = document.querySelectorAll(".next_btn");
 
-  editQuantityEvent(prev_btns, next_btns, cartItems);
+  editQuantityEvent(prevBtns, nextBtns, cartItems);
   initializeDeleteButtonsEvent(document.querySelectorAll(".xoa_sp"));
   showCartSlider();
   countdown();
   gettotalCart();
 }
 
-
-
 //TOTAL
 function updateCartUI(total) {
-  const total_cart = document.getElementById("total-cart");
-  total_cart.innerText = `$${total}.00`;
+  const totalCart = document.getElementById("total-cart");
+  totalCart.innerText = `$${total}.00`;
 }
 function gettotalCart() {
   const total = totalCart();
@@ -102,23 +87,23 @@ function gettotalCart() {
 }
 gettotalCart();
 // DELETE PRODUCT
-function handleDeleteButtonClick(del_sp) {
-  const productId = parseInt(del_sp.getAttribute("product_id"));
+function handleDeleteButtonClick(deleteProducts) {
+  const productId = parseInt(deleteProducts.getAttribute("product_id"));
   deleteProduct(productId);
   showCart();
 }
 
-function initializeDeleteButtonsEvent(delete_btns) {
-  delete_btns.forEach((del_sp) => {
-    del_sp.addEventListener("click", () => {
-      handleDeleteButtonClick(del_sp);
+function initializeDeleteButtonsEvent(deleteBtn) {
+  deleteBtn.forEach((deleteProducts) => {
+    deleteProducts.addEventListener("click", () => {
+      handleDeleteButtonClick(deleteProducts);
     });
   });
 }
 
 //Cập nhật số lượng sản phẩm trong giỏ hàng
-export function editQuantityEvent(prev_btns, next_btns, data) {
-  prev_btns.forEach((prev) => {
+export function editQuantityEvent(prevBtns, nextBtns, data) {
+  prevBtns.forEach((prev) => {
     prev.addEventListener("click", () => {
       data.forEach((product, index) => {
         if (
@@ -133,7 +118,7 @@ export function editQuantityEvent(prev_btns, next_btns, data) {
     });
   });
 
-  next_btns.forEach((next) => {
+  nextBtns.forEach((next) => {
     next.addEventListener("click", () => {
       data.forEach((product, index) => {
         if (
@@ -149,6 +134,6 @@ export function editQuantityEvent(prev_btns, next_btns, data) {
 
 // Close box cart
 document.querySelector(".close-svg").addEventListener("click", () => {
-  let box_cart = document.querySelector(".box-cart");
-  box_cart.style.display = "none";
+  let boxCart = document.querySelector(".box-cart");
+  boxCart.style.display = "none";
 });
