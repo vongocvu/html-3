@@ -47,11 +47,9 @@ export function totalCart() {
 //DELETE PRODUCT
 
 export function deleteProduct(productId) {
-  // Sử dụng filter để lọc ra các sản phẩm có id trùng với productId
-  // Ở đây, index không phải là một chỉ số của mảng, mà là một mảng chứa các sản phẩm trùng id.
+ 
   const index = cartItems.filter((product) => product.id === productId);
   if (index !== -1) {
-    // Xóa sản phẩm khỏi mảng cartItems nếu tìm thấy chỉ số hợp lệ
     cartItems.splice(index, 1);
   }
 }
