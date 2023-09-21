@@ -4,7 +4,7 @@ export function initializeFormActions() {
   const cancelButton = document.getElementById("btn-cancel");
   const overlay = document.querySelector(".overlay");
   const uploadedImage = document.getElementById("uploadedImage");
-
+  const btnAdd = document.getElementById("btnSubmit")
   addButton.addEventListener("click", () => {
     boxItems.style.display = "block";
     overlay.style.display = "block";
@@ -16,6 +16,14 @@ export function initializeFormActions() {
     uploadedImage.style.display = "none";
     boxItems.reset();
   });
+
+  // btnAdd.addEventListener("click" , () =>{
+  //     boxItems.style.display = "none"
+  //     overlay.style.display = "none";
+  //     // boxItems.reset();
+  // });
+
+
 
   document.getElementById("file").addEventListener("change", function () {
     if (this.files[0]) {

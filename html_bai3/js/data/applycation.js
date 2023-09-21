@@ -1,4 +1,4 @@
-export const allApplycations = [
+export let allApplycations = [
     {
         id: 1,
         name: "Cococ",
@@ -49,5 +49,29 @@ export const allApplycations = [
         name: "Thu vien",
         image: "/html_bai3/img/youtube_icon.png"
     },
-
+    {
+        id: 11,
+        name: "Thu vien",
+        image: "/html_bai3/img/youtube_icon.png"
+    },
+    {
+        id: 12,
+        name: "Tiktok",
+        image: "/html_bai3/img/twitter_icon.png"
+    },
+    {
+        id: 13,
+        name: "Facebook",
+        image: "/html_bai3/img/pinterest_icon.png"
+    },
+    {
+        id: 14,
+        name: "Slack",
+        image: "/html_bai3/img/stumbleupon_icon.png"
+    },
+    {
+        id: 15,
+        name: "IG",
+        image: "/html_bai3/img/tumblr_icon.png"
+    },
 ]

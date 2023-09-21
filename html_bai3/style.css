@@ -39,10 +39,13 @@ body {
 .form_add_ud_name input{
      border: none;
      outline: none;
-    margin: 20px;
+     margin: 20px 0px 0px 20px;
 }
 .form_add_ud_upfile{
     margin: 0px 20px;
+}
+.form_add_ud_upfile{
+    margin-top: 15px;
 }
 .form_add_ud_upfile img {
     display: none;
@@ -127,5 +130,11 @@ body {
 }
 .items-apply:hover .btn-del {
     display: block;
+}
+.error-message{
+    display: none;
+    font-size: 10px;
+    margin-left: 20px;
+    color: red;
 }
 }
